@@ -1,24 +1,23 @@
 body{
     background-color: #223;
     color: white;
+    margin: 0;
 }
 
 .map{
     width: 500px;
     height: 500px;
     border: 3px solid #444;
-    border-top:0;
-    margin-left: 1rem;
-   
+    margin-left: 2rem;
 }
 
 .hcoords{
     width: 500px;
     display: flex;
     justify-content: space-around;
-    margin-left: 1rem;
+    margin-left: 30px;
     margin-bottom: -15px;
-
+    margin-top: 10px;
 } 
 
 .vcoords{
@@ -26,6 +25,7 @@ body{
     display: flex;
     justify-content: space-around;
     transform: rotate(90deg) translateX(260px) translateY(250px);
+    margin-left: 10px;
 } 
 .vcoords span{
     transform: rotate(-90deg);
@@ -35,10 +35,7 @@ body{
     width: 48px;
     height: 48px;
     border: 1px solid #666;
-    background-color: transparent;
-  
     float: left;
-    outline: none;
 }
 
 .map .ship{
