@@ -32,7 +32,8 @@ addHcoords();
 
 
 function shoot(coordinates){
-    
+    console.log("clicked")
+
     fetch(`http://127.0.0.1:5500/?shoot=${coordinates}`)
         .then(res => {
             if(res.ok){
@@ -59,26 +60,25 @@ function addSquares() {
 
     for(let ri = 0; ri < 10; ri++) {
         for(let ci = 0; ci < 10; ci++) {
-            let coordinates = `${ri}x${ci}`;
+            let coordinates = `${ri}x${ci}`
+            // console.log(coordinates)
             
 
             if(map[ri][ci] == 1){
                 squares += `
-                    <a 
+                    <div 
                         class="ship sq" 
-                        href="/?shoot=${coordinates}"
-                        onclick="shoot('${coordinates}')"
+                        onclick="shoot(${coordinates})"
                     >
-                    </a>
+                    </div>
                 `
             }else{
                 squares += `
-                     <a 
+                     <div
                         class="sq" 
-                        href="/?shoot=${coordinates}"
-                        onclick="shoot('${coordinates}')"
+                        onclick="shoot(${coordinates})"
                     >
-                    </a>
+                    </div>
                 `
 
             }
@@ -92,7 +92,7 @@ function addSquares() {
 addSquares();
 
 
-
+// href="/?shoot=${coordinates}"
 
 
 
