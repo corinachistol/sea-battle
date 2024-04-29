@@ -1,6 +1,7 @@
 import { map, coordinates } from "./map.js";
 
 
+
     
 function addVcoords(coords) {
     let vcoords = document.getElementById('vcoords');
@@ -30,33 +31,11 @@ function addHcoords() {
 addHcoords();
 
 
-
-function shoot(coordinates){
-    console.log("clicked")
-
-    fetch(`http://127.0.0.1:5500/?shoot=${coordinates}`)
-        .then(res => {
-            if(res.ok){
-                console.log(coordinates)
-                let coords = coordinates.split('x')
-                console.log(coords[0])
-                console.log(coords[1])
-                // location. assign("/")
-            }else{
-                console.log("Not successfull")
-            }
-
-        } )
-        .catch(error => console.log(error))
-}
-shoot('4x3');
-
-
 function addSquares() {
-    let div_map = document.getElementById('map');
+    let form = document.getElementById('form');
     let squares="";
 
-    div_map.innerHTML = ``;
+    form.innerHTML = ``;
 
     for(let ri = 0; ri < 10; ri++) {
         for(let ci = 0; ci < 10; ci++) {
@@ -66,30 +45,54 @@ function addSquares() {
 
             if(map[ri][ci] == 1){
                 squares += `
-                    <div 
+                    <button 
                         class="ship sq" 
-                        onclick="shoot(${coordinates})"
+                        name="shoot"
+                        formaction="/?shoot=${coordinates}" 
+                        onclick="send_the_request(${coordinates})"
                     >
-                    </div>
+                    </button>
                 `
             }else{
                 squares += `
-                     <div
+                    <button
                         class="sq" 
-                        onclick="shoot(${coordinates})"
+                        name="shoot"
+                        formaction="/?shoot=${coordinates}"
+                        onclick="send_the_request(${coordinates})"
                     >
-                    </div>
+                    </button>
                 `
 
             }
 
         }
     }
-    div_map.innerHTML = squares;
+    form.innerHTML = squares;
 
 }
 
 addSquares();
+
+
+async function send_the_request(coordinates) {
+    const response = await fetch(`http://127.0.0.1:5500/?shoot=${coordinates}`)
+        if(response.ok){
+                console.log(coordinates)
+                let coords = coordinates.split('x')
+                
+                return coords
+                // console.log(coords[0])
+                // console.log(coords[1])
+                location. assign("/")
+            }else{
+                throw new Error('Network response was not ok');
+            }
+
+}
+
+send_the_request('1x1')
+
 
 
 // href="/?shoot=${coordinates}"
