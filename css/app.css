@@ -31,14 +31,14 @@ body{
     transform: rotate(-90deg);
 }
 
-.map button.sq{
-    width: 50px;
-    height: 50px;
+.map .sq{
+    width: 48px;
+    height: 48px;
     background-color: #223;
     border: 1px solid #666;
     float: left;
 }
 
-.map button.ship{
+.map .ship{
     background-color: #651;
 }

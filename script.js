@@ -45,23 +45,21 @@ function addSquares() {
 
             if(map[ri][ci] == 1){
                 squares += `
-                    <button 
+                    <a
                         class="ship sq" 
-                        name="shoot"
-                        formaction="/?shoot=${coordinates}" 
-                        onclick="send_the_request(${coordinates})"
+                        href="/?shoot=${coordinates}"
+                        onclick="getCoords(${coordinates})"
                     >
-                    </button>
+                    </a>
                 `
             }else{
                 squares += `
-                    <button
+                    <a
                         class="sq" 
-                        name="shoot"
-                        formaction="/?shoot=${coordinates}"
-                        onclick="send_the_request(${coordinates})"
+                        href="/?shoot=${coordinates}"
+                        onclick="getCoords(${coordinates})"
                     >
-                    </button>
+                    </a>
                 `
 
             }
@@ -75,27 +73,26 @@ function addSquares() {
 addSquares();
 
 
-async function send_the_request(coordinates) {
-    const response = await fetch(`http://127.0.0.1:5500/?shoot=${coordinates}`)
+async function getCoords(coordinates) {
+    const response = await fetch(`http:localhost:5500/?shoot=${coordinates}`)
         if(response.ok){
                 console.log(coordinates)
                 let coords = coordinates.split('x')
+                // location. assign("/")
                 
                 return coords
                 // console.log(coords[0])
                 // console.log(coords[1])
-                location. assign("/")
             }else{
                 throw new Error('Network response was not ok');
             }
 
 }
 
-send_the_request('1x1')
 
 
 
-// href="/?shoot=${coordinates}"
+
 
 
 
